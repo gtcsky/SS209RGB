@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\SS209_RGB.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\SS209_RGB.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Dec 02 10:54:23 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Dec 02 14:57:59 2021
 <BR><P>
 <H3>Maximum Stack Usage =        192 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1228,7 +1228,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeEepromData
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;factoryModeCoolDownFunc
+<BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MenuFunction
+<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;factoryModeCoolDownFunc
 </UL>
 
 <P><STRONG><a name="[61]"></a>StoreExceptions2Flash</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, user_internalflash.o(.text))
@@ -1376,8 +1377,8 @@ Global Symbols
 
 <P><STRONG><a name="[bd]"></a>setKeyPressedFlag</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, user_key.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;keyPressCheck
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSwitchKeyPressedFlag
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setPowerKeyPressedFlag
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSwitchKeyPressedFlag
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setPowerKeyPressedFlag
 </UL>
 
 <P><STRONG><a name="[ba]"></a>keyReleaseCheck</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, user_key.o(.text))
@@ -1410,13 +1411,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[84]"></a>setPowerKeyPressedFlag</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, user_key.o(.text))
+<P><STRONG><a name="[85]"></a>setPowerKeyPressedFlag</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, user_key.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setKeyPressedFlag
 </UL>
 <BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_IRQHandler
 </UL>
 
-<P><STRONG><a name="[85]"></a>setSwitchKeyPressedFlag</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, user_key.o(.text))
+<P><STRONG><a name="[84]"></a>setSwitchKeyPressedFlag</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, user_key.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setKeyPressedFlag
 </UL>
 <BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_IRQHandler
@@ -1799,12 +1800,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MenuFunction
 </UL>
 
-<P><STRONG><a name="[b8]"></a>MenuFunction</STRONG> (Thumb, 820 bytes, Stack size 40 bytes, user_menu.o(.text))
+<P><STRONG><a name="[b8]"></a>MenuFunction</STRONG> (Thumb, 850 bytes, Stack size 40 bytes, user_menu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = MenuFunction &rArr; brightnessDecFunc &rArr; updateLEDStts &rArr; updateRGBLamp &rArr; hsb2Rgb &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;resetStoreInfoTimer
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateLEDStts
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;resetEntrySleepTime
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clearExceptions
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;versionDisplay
 <LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateSceneDisplay
@@ -4317,8 +4319,8 @@ Local Symbols
 <P><STRONG><a name="[82]"></a>GPIO_IRQHandler</STRONG> (Thumb, 206 bytes, Stack size 8 bytes, user_exti.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = GPIO_IRQHandler &rArr; entryNormalModeChk
 </UL>
-<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSwitchKeyPressedFlag
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setPowerKeyPressedFlag
+<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSwitchKeyPressedFlag
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setPowerKeyPressedFlag
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;entryNormalModeChk
 </UL>
 <BR>[Called By]<UL><LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOD_IRQHandler

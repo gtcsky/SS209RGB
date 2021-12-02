@@ -1554,6 +1554,9 @@ void MenuFunction(void) {
 			}
 #endif
 			resetStoreInfoTimer();
+		} else if (vKeyValue==SWITCH_KEY_LONG_PRESSED) {
+			clearExceptions();
+			NVIC_SystemReset();
 		} else if (vKeyValue==FACTORY_MODE_KEY) {
 			displayParams.DisplayModeIndex = FactoryMode;
 			fIsLightActive = ON;

@@ -62,8 +62,8 @@
 #define	CLR_Blue_LED_PIN						GPIO_ResetBits(Blue_LED_PORT, Blue_LED_PIN)
 
 #define	KeyPower_Port							GPIOC
-#define	KeyPower_Pin							GPIO_Pin_5
-#define	KeyPower_PinNo							5
+#define	KeyPower_Pin							GPIO_Pin_6
+#define	KeyPower_PinNo							6
 #define 	Power_KEY_PRESSED   					0x01
 #define	checkPowerKeyPressed					(vIsKeyPressed&Power_KEY_PRESSED)
 #define	clrPowerKeyPressed						vIsKeyPressed&=~Power_KEY_PRESSED//0xFD
@@ -71,8 +71,8 @@
 #define	GET_POWER_KEY_PIN_STTS				GPIO_ReadInputDataBit(KeyPower_Port, KeyPower_Pin)
 
 #define	KeySwitch_Port							GPIOC
-#define	KeySwitch_Pin							GPIO_Pin_6
-#define	KeySwitch_PinNo							6
+#define	KeySwitch_Pin							GPIO_Pin_5
+#define	KeySwitch_PinNo							5
 
 #define	KeyInc_Port								GPIOC
 #define	KeyInc_Pin								GPIO_Pin_3

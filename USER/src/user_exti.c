@@ -207,12 +207,6 @@ void EXTI_Key_Config(void)
 	GPI0_IRQ_InitStruct.GPI0_IRQ_Pin_Clear = ENABLE;				//GPIOx_INTCLR  0/1:保留/清除中断标志
 	/* 选择EXTI的信号源 */
 	GPIO_EXTILineConfig(KeyPower_Port,&GPI0_IRQ_InitStruct, KeyPower_Pin);		//POWER KEY
-//	GPIO_EXTILineConfig(KeyInc_Port,&GPI0_IRQ_InitStruct, KeyInc_Pin);
-//	GPIO_EXTILineConfig(KeyDec_Port,&GPI0_IRQ_InitStruct, KeyDec_Pin);
-//
-//	GPI0_IRQ_InitStruct.GPI0_IRQ_Pin_Polarity = DISABLE;			//GPIOx_INTPOLCR   0/1 :下降或低电平触发/上升或高电平触发
-//	GPI0_IRQ_InitStruct.GPI0_IRQ_Pin_Edge =  ENABLE;				//GPIOx_INTANY 设置边沿触发类型,   0/1 :由PxIVAL5决定/双沿触发
-//	GPIO_EXTILineConfig(ChargePort,&GPI0_IRQ_InitStruct, ChargePin);
 }
 
 /**
@@ -251,13 +245,13 @@ static void GPIO_IRQHandler(GPIO_TypeDef* GPIOx) {
 	} else if ((GPIOx->RIS & GPIO_Pin_5) && (GPIOx->MIS & GPIO_Pin_5)) {
 		GPIOx->ICLR |= GPIO_Pin_5;
 		if (GPIOx == GPIOC) {
-			setPowerKeyPressedFlag();
+			setSwitchKeyPressedFlag();
 		}
 
 	} else if ((GPIOx->RIS & GPIO_Pin_6) && (GPIOx->MIS & GPIO_Pin_6)) {
 		GPIOx->ICLR |= GPIO_Pin_6;
 		if (GPIOx == GPIOC) {
-			setSwitchKeyPressedFlag();
+			setPowerKeyPressedFlag();
 		}
 	} else if ((GPIOx->RIS & GPIO_Pin_7) && (GPIOx->MIS & GPIO_Pin_7)) {
 		GPIOx->ICLR |= GPIO_Pin_7;

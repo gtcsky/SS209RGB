@@ -102,7 +102,7 @@
 #define	ICON_Percent_X					ICON_HUES_X
 #define	ICON_Percent_Y					0
 
-#define	ACTIVITY_NAME_X				LCD_START_X+3
+#define	ACTIVITY_NAME_X				LCD_START_X+4
 #define	ACTIVITY_NAME_Y				0
 
 #define	ICON_charge_X0					ICON_batt_X0-32

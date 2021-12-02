@@ -486,15 +486,15 @@ void	updateRGBLamp(displayParamsStruct * disParams){
 
 void updateColorInRgbMode(displayParamsStruct * disParams) {
 	if(disParams->aRGBValue[0])
-		pUserColor->red = PWM_FRQ_CONST * ((0.333 * disParams->aRGBValue[0] / 255)*(1-SINGLE_COLOR_START_DUTY)+SINGLE_COLOR_START_DUTY);			//;
+		pUserColor->red = PWM_FRQ_CONST * ((RGB_MODE_POWER_COE * disParams->aRGBValue[0] / 255)*(1-SINGLE_COLOR_START_DUTY)+SINGLE_COLOR_START_DUTY);			//;
 	else
 		pUserColor->red=0;
 	if(disParams->aRGBValue[1])
-		pUserColor->green = PWM_FRQ_CONST * ((0.333 * disParams->aRGBValue[1] / 255)*(1-SINGLE_COLOR_START_DUTY)+SINGLE_COLOR_START_DUTY);
+		pUserColor->green = PWM_FRQ_CONST * ((RGB_MODE_POWER_COE * disParams->aRGBValue[1] / 255)*(1-SINGLE_COLOR_START_DUTY)+SINGLE_COLOR_START_DUTY);
 	else
 		pUserColor->green = 0;
 	if(disParams->aRGBValue[2])
-		pUserColor->blue = PWM_FRQ_CONST * ((0.333 * disParams->aRGBValue[2] / 255)*(1-SINGLE_COLOR_START_DUTY)+SINGLE_COLOR_START_DUTY);
+		pUserColor->blue = PWM_FRQ_CONST * ((RGB_MODE_POWER_COE * disParams->aRGBValue[2] / 255)*(1-SINGLE_COLOR_START_DUTY)+SINGLE_COLOR_START_DUTY);
 	else
 		pUserColor->blue = 0;
 	updateColor(pUserColor);

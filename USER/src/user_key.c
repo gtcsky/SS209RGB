@@ -205,13 +205,13 @@ keyDectDef  switchKeyInfo={
 		.currentKeyPressed=SWITCH_KEY_PRESSED,
 		.currentKeyGod=&vIsSwitchKeyGod,
 		.shortKeyValue=SWITCH_KEY_SHORT_PRESSED,
-		.longKeyValue=SWITCH_KEY_SHORT_PRESSED,
+		.longKeyValue=SWITCH_KEY_LONG_PRESSED,
 		.keyTimer=&vSwitchKeyTimer,
 		.GPIOx=KeySwitch_Port,
 		.GPIO_Pin=KeySwitch_Pin,
 		.GPIO_No=KeySwitch_PinNo,
 		.shortTimer=SHORT_PRESSED_TIME,									//step 5ms
-		.longTimer=SHORT_PRESSED_TIME+1,								//step 5ms
+		.longTimer=LONG_PRESSED_3S,								//step 5ms
 		.fastAdjutMode=0,
 
 };
