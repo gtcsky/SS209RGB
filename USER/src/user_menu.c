@@ -1483,7 +1483,7 @@ void MenuFunction(void) {
 				updateLEDStts(&displayParams);
 			}else if(displayParams.vActivityIndex==RGB_ACTIVITY){
 				if(vKeyValue&FAST_ADJUST_FLAG)
-					step=FAST_ADJUST_STEP+3;
+					step=FAST_ADJUST_STEP+4;
 				if (displayParams.aRGBValue[displayParams.aArrowIndex[RGB_ACTIVITY]] != MAX_RGB_VALUE) {
 					uint8 temp=displayParams.aArrowIndex[RGB_ACTIVITY];
 					publicIncFunc(&displayParams.aRGBValue[temp],step,MAX_RGB_VALUE,MIN_RGB_VALUE);
@@ -1542,7 +1542,7 @@ void MenuFunction(void) {
 				updateLEDStts(&displayParams);
 			}else if(displayParams.vActivityIndex==RGB_ACTIVITY){
 				if(vKeyValue&FAST_ADJUST_FLAG)
-					step=FAST_ADJUST_STEP+3;
+					step=FAST_ADJUST_STEP+5;
 				if (displayParams.aRGBValue[displayParams.aArrowIndex[RGB_ACTIVITY]] != MIN_RGB_VALUE) {
 					uint8 temp=displayParams.aArrowIndex[RGB_ACTIVITY];
 					publicDecFunc(&displayParams.aRGBValue[temp],step,MIN_RGB_VALUE);

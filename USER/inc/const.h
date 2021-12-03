@@ -102,7 +102,7 @@ typedef enum{
 #define	MAX_RGB_VALUE						255
 #if(RGB_INSIDE==1)
 	#define	DEFAULT_ARROR_INDEX				0	//3
-	#define	RGB_MODE_POWER_COE				0.66
+	#define	RGB_MODE_POWER_COE				0.55
 #else
 	#define	DEFAULT_ARROR_INDEX				3	//3
 #endif
