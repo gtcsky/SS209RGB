@@ -427,16 +427,6 @@ void fucnPer500ms(void) {
 		batterDisplay(vCurrentBattLv);
 	}
 }
-/**************************************************************
- *
- *从高温模式值 获取常温模式PWM的值
- *
- ***************************************************************/
-u16 getOriginalPWMData(u16 curData) {
-	u16 vtTemp16 = 0;
-	vtTemp16 = curData * TEMPERATURE_COE_NORMAL / TEMPERATURE_COE_LOW;
-	return ((vtTemp16 > PWM_FRQ_CONST) ? PWM_FRQ_CONST : vtTemp16);
-}
 
 //void updateBrightnessByTemperature(void){
 //	setCoolData(vTemperatureCoe*(pcaDataStruct.valueOfCw));
@@ -604,6 +594,23 @@ void hotFuncDeinit(void) {
 	vSystemTemperature = 0;
 	batterDisplay(vCurrentBattLv);
 }
+
+/**************************************************************
+ *
+ *从高温模式值 获取常温模式PWM的值
+ *
+ ***************************************************************/
+u16 getOriginalPWMData(u16 curData){
+	u16	vtTemp16=0;
+	vtTemp16=curData*TEMPERATURE_COE_NORMAL/TEMPERATURE_COE_LOW;
+	return	((vtTemp16>PWM_FRQ_CONST)?PWM_FRQ_CONST:vtTemp16);
+}
+
+void updateBrightnessByTemperature(void){
+	setCoolData(vTemperatureCoe*(pcaDataStruct.valueOfCw));
+	setWarmData(vTemperatureCoe*(pcaDataStruct.valueOfMw));
+}
+
 /***********************************************************************************************************
   *  @brief 			系统温度相关动作处理
   *
@@ -630,15 +637,16 @@ void checkSystemHot(void) {
 
 		} else if (vSystemTemperature >= OVER_TEMPERATURE_VOLT_Lv0 && !fIsHotNow) {
 			fIsHotNow = TRUE;
-			vtBrightnessTemp = displayParams.brightness;
-			displayParams.brightness *= TEMPERATURE_COE_LOW;
-			if (!displayParams.brightness)
-				displayParams.brightness = 1;
-//			setBrightnessOnlyData(BRIGHTNESS_ONLY_LENGTH, &displayParams);
-			displayParams.brightness = vtBrightnessTemp;
+			vTemperatureCoe= TEMPERATURE_COE_LOW;
+			updateBrightnessByTemperature();
 		} else if (vSystemTemperature <= NORMAL_TEMPERATURE_VOLT && fIsHotNow) {
 			hotFuncDeinit();
-//			setBrightnessOnlyData(BRIGHTNESS_ONLY_LENGTH, &displayParams);
+			if (fIsLightActive==ON) {
+				vTemperatureCoe= TEMPERATURE_COE_NORMAL;
+				pcaDataStruct.valueOfCw = getOriginalPWMData( pcaDataStruct.valueOfCw);
+				pcaDataStruct.valueOfMw = getOriginalPWMData( pcaDataStruct.valueOfMw);
+				updateBrightnessByTemperature();
+			}
 		}
 	}
 }
@@ -1524,10 +1532,13 @@ void MenuFunction(void) {
 				if (displayParams.aArrowIndex[HSI_ACTIVITY] == HuesIndex) {
 					if (vKeyValue & FAST_ADJUST_FLAG)
 						step = FAST_ADJUST_STEP * 2;
-					if (displayParams.hues < step)
+					if (!displayParams.hues ) {
+						displayParams.hues = MAX_HUES ;
+					}else if (displayParams.hues < step) {
 						displayParams.hues = MAX_HUES + displayParams.hues - step;
-					else
+					} else {
 						displayParams.hues -= step;
+					}
 					updateHuesDisplay(&displayParams);
 				} else if (displayParams.aArrowIndex[HSI_ACTIVITY] == BrightnessIndex) {
 					brightnessDecFunc(step);
