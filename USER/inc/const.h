@@ -57,7 +57,7 @@ typedef enum{
 #define	SYSTEM_VCAP_VOLT						(2.50)
 
 #define	VOLT_BATT_FULL							4.20
-#define	SOFTWARE_VERSION						"SW:2021-12-06"
+#define	SOFTWARE_VERSION						"SW:2021-12-07"
 #define	SOFTWARE_VERSION_LENGTH				13
 #define	DRIVER_VERSION_LEN					10					//有效长度
 #define	HARDWARE_VERSION					"HW:VER07"
@@ -95,8 +95,8 @@ typedef enum{
 #else
 	#define	MIN_BRIGHTNESS						1
 #endif
-#define	DEFAULT_HUES							0
-#define	DEFAULT_BRIGHTNESS					5
+#define	DEFAULT_HUES							100
+#define	DEFAULT_BRIGHTNESS					0
 #define	DEFAULT_SATURATION					100
 #define	MIN_RGB_VALUE							0
 #define	MAX_RGB_VALUE						255
