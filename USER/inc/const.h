@@ -57,7 +57,7 @@ typedef enum{
 #define	SYSTEM_VCAP_VOLT						(2.50)
 
 #define	VOLT_BATT_FULL							4.20
-#define	SOFTWARE_VERSION						"SW:2021-12-07"
+#define	SOFTWARE_VERSION						"SW:2021-12-13"
 #define	SOFTWARE_VERSION_LENGTH				13
 #define	DRIVER_VERSION_LEN					10					//有效长度
 #define	HARDWARE_VERSION					"HW:VER07"

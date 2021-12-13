@@ -753,12 +753,18 @@ void battInfoProcess(void) {
 	if (!fIsCharging) {
 		tempVolt = calcBattVolt();
 		if (tempVolt < 0) {
+			if(!fIsDcMode){
+				fIsNeedUpdateBattLv = TRUE;
+			}
 			fIsDcMode = 1;
 			fPowerOffByBattLow = 0;
 		} else if (tempVolt == 0) {
 			return;
 		} else {
 			vAdVoltOfBatt = tempVolt;
+			if(fIsDcMode){
+				fIsNeedUpdateBattLv = TRUE;
+			}
 			fIsDcMode = 0;
 		}
 		//-------------------------------------------
