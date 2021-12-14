@@ -61,13 +61,25 @@ int main(void) {
 	setWarmData(0);
 	resetEntrySleepTime();
 	sysTimes.vSystem5ms = 0;
-	while (sysTimes.vSystem5ms < 20)
-		;
+	while (sysTimes.vSystem5ms < 20);
 	sysTimes.vSystem5ms = 0;
 	/*Config IWDG Parameters*/
 	fIsSystemInitialing = 0;
 
 	vBattVol = readBattInfoImmediately();
+	sysTimes.vSystem5ms = 0;
+	uint8 retryTimes=2;
+	do {
+		if (!fIsDcMode && vBattVol < BATT_LV0_THESHOLD) {
+			while (sysTimes.vSystem5ms < 60)	;
+			sysTimes.vSystem5ms = 0;
+			vBattVol = readBattInfoImmediately();
+			sysTimes.vSystem5ms = 0;
+		}else{
+			break;
+		}
+	} while (retryTimes--);
+//	vBattVol=4.0;
 	vCompensationVolt = vBattVol;
 //	setBattLevel(vBattVol);
 	if (exceptionsCheck()) {
@@ -116,7 +128,7 @@ int main(void) {
 #if(LCD_INSIDE==1)
 	powerOnLcdInit();
 #endif
-	fIsPowerOnFirst10s = TRUE;
+	fIsPowerOnFirst3s = TRUE;
 	fIsBattFully = FALSE;
 
 	if (fIsSystemOff)

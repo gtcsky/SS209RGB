@@ -48,7 +48,7 @@ extern uint8 fIsSystemFirstPowerON;
 extern uint8 fTimeToI2cComm;
 extern uint8 fNeedSetChargeingIC;
 extern uint8 fIsBattFully;
-extern uint8 fIsPowerOnFirst10s;
+extern uint8 fIsPowerOnFirst3s;
 extern u16 vTimeToSleep;
 //extern	float vSystemTemperature;
 extern uint8 vSystemTemperature;

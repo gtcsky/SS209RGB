@@ -99,7 +99,7 @@ float battArray[BATT_ARRAY_SIZE]={0};
 u8	fIsUpdateChargeingVolt=FALSE;
 u8	fTimeToI2cComm=FALSE;
 u8	vStartI2cAfterTimes=0;
-u8	fIsPowerOnFirst10s=FALSE;
+u8	fIsPowerOnFirst3s=FALSE;
 u8	fIsNewCMDGod=FALSE;
 uint8	vStoreParamCountDwon=0;
 u8	fIsDriverVersionGot=FALSE;
@@ -842,7 +842,7 @@ void	brakeBattDetProcess(void){
 //			if(!fIsCharging){
 //				startCharging();
 //			}
-//			if(fIsPowerOnFirst10s&&fIsBattFully){
+//			if(fIsPowerOnFirst3s&&fIsBattFully){
 //				startCharging();						//首次上电前10s,允许从满电变为充电状态
 //			}
 //		}
@@ -979,8 +979,8 @@ void fucnPer5ms(void) {
 			sysTimes.fTime1s = 0;
 			vSystem1s += 1;
 			fucnPer1s();
-			if (fIsPowerOnFirst10s && vSystem1s > 10) {
-				fIsPowerOnFirst10s = FALSE;
+			if (fIsPowerOnFirst3s && vSystem1s > 3) {
+				fIsPowerOnFirst3s = FALSE;
 			}
 		}
 	}
@@ -1795,7 +1795,7 @@ void setBattLevel(float vBattReal) {
 		} else {
 			adcVoltCompensation(&vBattReal);
 			processBattLevel(vBattReal, FALSE);
-			if (vBattReal < BATT_LV0_THESHOLD) {
+			if (vBattReal < BATT_LV0_THESHOLD&&!fIsPowerOnFirst3s) {
 				fPowerOffByBattLow = 1;
 			}
 		}
